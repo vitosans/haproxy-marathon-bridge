@@ -73,7 +73,7 @@ function install_haproxy_system {
     sudo chkconfig haproxy on
   elif [[ $os == "Ubuntu" ]] || [[ $os == "Debian" ]]
   then 
-    sudo env DEBIAN_FRONTEND=noninteractive aptitude install -y haproxy
+    sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y haproxy
     sudo sed -i 's/^ENABLED=0/ENABLED=1/' /etc/default/haproxy
   elif [[ $os == "SuSE" ]]
   then

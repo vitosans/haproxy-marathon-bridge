@@ -1,12 +1,12 @@
-#!/bin/bash -
+#!/bin/bash - 
 #===============================================================================
 #
-#          FILE: mesos-tool-slave.sh
-#
-#         USAGE: ./mesos-tool-slave.sh
-#
-#   DESCRIPTION:
-#
+#          FILE: mesos-tool-master.sh
+# 
+#         USAGE: ./mesos-tool-master.sh 
+# 
+#   DESCRIPTION: 
+# 
 #       OPTIONS: ---
 #  REQUIREMENTS: ---
 #          BUGS: ---
@@ -21,12 +21,19 @@ set -o nounset                              # Treat unset variables as an error
 
 case "$1" in
     'start')
+        echo "Starting zookeeper"
+        service zookeeper start
+
         echo "Starting mesos-slave"
         service mesos-slave start
+
         ;;
 
     'stop')
         echo "Stopping mesos-slave"
         service mesos-slave stop
+
+        echo "Stopping zookeeper"
+        service zookeeper stop
         ;;
 esac
